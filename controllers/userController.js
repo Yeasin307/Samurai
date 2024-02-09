@@ -1,16 +1,18 @@
 const User = require('../models/User');
 const { checkUserExists } = require('../helper/checkUserExists');
+const { successResponse } = require('./responseController');
 
 const createUser = async (req, res, next) => {
     try {
-        // const { user_id, user_name, balance } = req.body;
-
         const newUser = await User.create(req.body);
 
-        return res.status(201).json({
-            user_id: newUser.user_id,
-            user_name: newUser.user_name,
-            balance: newUser.balance
+        return successResponse(res, {
+            statusCode: 201,
+            body: {
+                user_id: newUser.user_id,
+                user_name: newUser.user_name,
+                balance: newUser.balance
+            }
         });
     } catch (err) {
         next(err);
@@ -44,7 +46,7 @@ const createUser = async (req, res, next) => {
 // }
 
 const getSingleUser = async (req, res, next) => {
-    const user_id = req.params.user_id;
+    const user_id = req.params.id;
 
     try {
         const user = await checkUserExists(user_id);

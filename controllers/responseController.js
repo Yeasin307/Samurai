@@ -12,14 +12,12 @@ const errorResponse = (
 const successResponse = (
     res, {
         statusCode = 200,
-        message = 'Success',
-        payload = {}
+        body = {}
     }
 ) => {
     res.status(statusCode).json({
-        success: true,
-        message,
-        payload
+        status: statusCode,
+        body
     });
 }
 

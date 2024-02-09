@@ -1,20 +1,23 @@
 const Train = require('../models/Train');
 const { checkTrainExists } = require('../helper/checkTrainExists');
+const { successResponse } = require('./responseController');
 
 const createTrain = async (req, res, next) => {
     try {
         const newTrain = await Train.create(req.body);
-        console.log(newTrain.stops);
 
         const start = newTrain.stops.slice(0)[0].departure_time[0];
         const end = newTrain.stops.slice(-1)[0].arrival_time.slice(-1)[0];
 
-        return res.status(201).json({
-            train_id: newTrain.train_id,
-            train_name: newTrain.train_name,
-            capacity: newTrain.capacity,
-            service_start: start,
-            service_ends: end
+        return successResponse(res, {
+            statusCode: 201,
+            body: {
+                train_id: newTrain.train_id,
+                train_name: newTrain.train_name,
+                capacity: newTrain.capacity,
+                service_start: start,
+                service_ends: end
+            }
         });
     } catch (err) {
         next(err);
@@ -48,15 +51,19 @@ const createTrain = async (req, res, next) => {
 // }
 
 const getSingleTrain = async (req, res, next) => {
-    const train_id = req.params.train_id;
+    const train_id = req.params.id;
 
     try {
         const train = await checkTrainExists(train_id);
 
-        return res.status(200).json({
-            train_id: train.train_id,
-            train_name: train.train_name,
-            capacity: train.capacity,
+        return successResponse(res, {
+            body: {
+                train: {
+                    train_id: train.train_id,
+                    train_name: train.train_name,
+                    capacity: train.capacity,
+                }
+            }
         });
     } catch (err) {
         next(err);
@@ -64,12 +71,16 @@ const getSingleTrain = async (req, res, next) => {
 }
 
 const getAllTrain = async (req, res, next) => {
-
     try {
-        const trains = await Train.find();
+        const options = { _id: 0, stops: 0, createdAt: 0, updatedAt: 0, __v: 0 };
 
-        return res.status(200).json({
-            trains
+        const trains = await Train.find({}, options);
+
+        return successResponse(res, {
+            statusCode: 200,
+            body: {
+                trains
+            }
         });
     } catch (err) {
         next(err);
