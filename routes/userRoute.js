@@ -6,8 +6,6 @@ const {
 
 router.post('/', createUser);
 
-// router.put('/:id', updateBook);
-
 router.get('/:id', getSingleUser);
 
 router.get('/', getAllUser);

@@ -55,7 +55,7 @@ const addBalance = async (req, res, next) => {
         }
       });
     } else {
-      res.status(404).json({ status: 404, body: { message: `Wallet with ID ${walletId} not found.` } });
+      res.status(404).json({ status: 404, body: { message: `wallet with id; ${walletId} was not found.` } });
     }
   } catch (error) {
     next(error);

@@ -23,7 +23,8 @@ const createTrain = async (req, res, next) => {
                 train_name: newTrain.train_name,
                 capacity: newTrain.capacity,
                 service_start: start,
-                service_ends: end
+                service_ends: end,
+                num_stations: newTrain?.stops?.length
             }
         });
     } catch (err) {

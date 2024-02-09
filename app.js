@@ -7,6 +7,7 @@ const middlewares = require('./middlewares');
 const userRoute = require('./routes/userRoute');
 const stationRoute = require('./routes/stationRoute');
 const trainRoute = require('./routes/trainRoute');
+const ticketRoute = require('./routes/ticketRoute');
 
 //adding by Prohlad Mandal
 const walletRoute = require('./routes/walletsRoute');
@@ -24,6 +25,7 @@ app.use('/api/users', userRoute);
 app.use('/api/stations', stationRoute);
 app.use('/api/trains', trainRoute);
 app.use('/api/wallets', walletRoute)
+app.use('/api/tickets', ticketRoute)
 
 
 app.use((req, res, next) => {
