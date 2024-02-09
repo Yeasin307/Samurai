@@ -1,15 +1,19 @@
 const Station = require('../models/Station');
 const { checkStationExists } = require('../helper/checkStationExists');
+const { successResponse } = require('./responseController')
 
 const createStation = async (req, res, next) => {
     try {
         const newStation = await Station.create(req.body);
 
-        return res.status(201).json({
-            station_id: newStation.station_id,
-            station_name: newStation.station_name,
-            longitude: newStation.longitude,
-            latitude: newStation.latitude,
+        return successResponse(res, {
+            statusCode: 201,
+            body: {
+                station_id: newStation.station_id,
+                station_name: newStation.station_name,
+                longitude: newStation.longitude,
+                latitude: newStation.latitude,
+            }
         });
     } catch (err) {
         next(err);
