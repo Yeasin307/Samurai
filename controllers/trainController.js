@@ -70,7 +70,6 @@ const getAllTrain = async (req, res, next) => {
 
 module.exports = {
     createTrain,
-    // updateTrain,
     getSingleTrain,
     getAllTrain
 }

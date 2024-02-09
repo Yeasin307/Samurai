@@ -37,34 +37,14 @@ const getSingleUser = async (req, res, next) => {
 
 const getAllUser = async (req, res, next) => {
 
-    // const { author, title, genre, sort, order } = req.query;
-
-    // // add search criteria
-    // const filter = {};
-    // if (author) {
-    //     filter.author = author;
-    // }
-    // if (title) {
-    //     filter.title = title;
-    // }
-    // if (genre) {
-    //     filter.genre = genre;
-    // }
-
-    // // add sort and order options
-    // const sortOptions = {};
-    // if (sort) {
-    //     sortOptions[sort] = order === 'ASC' ? 1 : -1;
-    // }
-
-    // const options = { _id: 0, createdAt: 0, updatedAt: 0, __v: 0 };
-
     try {
-        // const books = await Book.find(filter, options).lean().sort(sortOptions);
         const users = await User.find({});
 
         return res.status(200).json({
-            users
+            status: 200,
+            body: {
+                users
+            }
         });
     } catch (err) {
         next(err);
