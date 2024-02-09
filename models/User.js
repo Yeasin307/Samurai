@@ -3,8 +3,6 @@ const { Schema, model } = require("mongoose");
 const userSchema = Schema({
     user_id: {
         type: Number,
-        unique: true,
-        require: true
     },
     user_name: {
         type: String,

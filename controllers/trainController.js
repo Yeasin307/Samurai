@@ -4,11 +4,17 @@ const { checkTrainExists } = require('../helper/checkTrainExists');
 const createTrain = async (req, res, next) => {
     try {
         const newTrain = await Train.create(req.body);
+        console.log(newTrain.stops);
+
+        const start = newTrain.stops.slice(0)[0].departure_time[0];
+        const end = newTrain.stops.slice(-1)[0].arrival_time.slice(-1)[0];
 
         return res.status(201).json({
             train_id: newTrain.train_id,
             train_name: newTrain.train_name,
             capacity: newTrain.capacity,
+            service_start: start,
+            service_ends: end
         });
     } catch (err) {
         next(err);

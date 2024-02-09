@@ -3,8 +3,6 @@ const { Schema, model } = require("mongoose");
 const stationSchema = Schema({
     station_id: {
         type: Number,
-        unique: true,
-        require: true
     },
     station_name: {
         type: String,
