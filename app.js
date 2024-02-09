@@ -3,7 +3,11 @@ const express = require('express');
 const createError = require('http-errors');
 
 const middlewares = require('./middlewares');
-const bookRoute = require('./routes/bookRoute');
+
+const userRoute = require('./routes/userRoute');
+const stationRoute = require('./routes/stationRoute');
+const trainRoute = require('./routes/trainRoute');
+
 const { errorResponse } = require('./controllers/responseController');
 
 const app = express();
@@ -12,7 +16,9 @@ const app = express();
 middlewares(app);
 
 // set routes
-app.use('/api/books', bookRoute);
+app.use('/api/users', userRoute);
+app.use('/api/stations', stationRoute);
+app.use('/api/trains', trainRoute);
 
 
 app.use((req, res, next) => {
