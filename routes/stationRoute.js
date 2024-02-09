@@ -8,7 +8,7 @@ router.post('/', createStation);
 
 // router.put('/:id', updateBook);
 
-router.get('/:id', getSingleStation);
+router.get('/:id/trains', getSingleStation);
 
 router.get('/', getAllStation);
 

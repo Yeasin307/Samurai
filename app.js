@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     return errorResponse(res, {
-        // statusCode: err.status,
+        statusCode: err.status,
         message: err.message
     });
 });

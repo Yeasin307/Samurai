@@ -6,8 +6,15 @@ const createTrain = async (req, res, next) => {
     try {
         const newTrain = await Train.create(req.body);
 
-        const start = newTrain.stops.slice(0)[0].departure_time[0];
-        const end = newTrain.stops.slice(-1)[0].arrival_time.slice(-1)[0];
+        let start, end;
+
+        newTrain.stops.forEach(stop => {
+            if (stop.arrival_time === null) {
+                start = stop.departure_time;
+            } else if (stop => stop.departure_time === null) {
+                end = stop.arrival_time;
+            }
+        });
 
         return successResponse(res, {
             statusCode: 201,
@@ -23,32 +30,6 @@ const createTrain = async (req, res, next) => {
         next(err);
     }
 }
-
-// const updateTrain = async (req, res, next) => {
-//     const id = req.params.id;
-
-//     try {
-//         await checkBookExists(id);
-
-//         const updatedBook = await Book.findOneAndUpdate(
-//             { id },
-//             {
-//                 $set: req.body,
-//             },
-//             { new: true }
-//         );
-
-//         return res.status(200).json({
-//             id: updatedBook.id,
-//             title: updatedBook.title,
-//             author: updatedBook.author,
-//             genre: updatedBook.genre,
-//             price: updatedBook.price
-//         });
-//     } catch (err) {
-//         next(err);
-//     }
-// }
 
 const getSingleTrain = async (req, res, next) => {
     const train_id = req.params.id;

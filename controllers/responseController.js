@@ -5,7 +5,8 @@ const errorResponse = (
     }
 ) => {
     res.status(statusCode).json({
-        message
+        status: statusCode,
+        body: { message }
     });
 }
 

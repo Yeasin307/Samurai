@@ -5,7 +5,7 @@ const checkStationExists = async (station_id) => {
     try {
         const stationExists = await Station.findOne({ station_id });
         if (!stationExists) {
-            throw createError(400, `book with id: ${station_id} was not found`);
+            throw createError(404, `station with id: ${station_id} was not found`);
         }
 
         return stationExists;

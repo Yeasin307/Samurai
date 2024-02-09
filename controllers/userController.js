@@ -19,32 +19,6 @@ const createUser = async (req, res, next) => {
     }
 }
 
-// const updateBook = async (req, res, next) => {
-//     const id = req.params.id;
-
-//     try {
-//         await checkBookExists(id);
-
-//         const updatedBook = await Book.findOneAndUpdate(
-//             { id },
-//             {
-//                 $set: req.body,
-//             },
-//             { new: true }
-//         );
-
-//         return res.status(200).json({
-//             id: updatedBook.id,
-//             title: updatedBook.title,
-//             author: updatedBook.author,
-//             genre: updatedBook.genre,
-//             price: updatedBook.price
-//         });
-//     } catch (err) {
-//         next(err);
-//     }
-// }
-
 const getSingleUser = async (req, res, next) => {
     const user_id = req.params.id;
 
@@ -99,7 +73,6 @@ const getAllUser = async (req, res, next) => {
 
 module.exports = {
     createUser,
-    // updateBook,
     getSingleUser,
     getAllUser
 }
