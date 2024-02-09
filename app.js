@@ -8,6 +8,10 @@ const userRoute = require('./routes/userRoute');
 const stationRoute = require('./routes/stationRoute');
 const trainRoute = require('./routes/trainRoute');
 
+//adding by Prohlad Mandal
+const walletRoute = require('./routes/walletsRoute');
+
+
 const { errorResponse } = require('./controllers/responseController');
 
 const app = express();
@@ -19,6 +23,7 @@ middlewares(app);
 app.use('/api/users', userRoute);
 app.use('/api/stations', stationRoute);
 app.use('/api/trains', trainRoute);
+app.use('/api/wallets', walletRoute)
 
 
 app.use((req, res, next) => {
