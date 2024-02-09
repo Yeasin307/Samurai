@@ -6,7 +6,7 @@ GUB LINEAR BOYS
 
 Green University of Bangladesh
 
-# Email Address
+# Email
 
 yeasinhossen173@gmail.com
 prohlad.m99@gmail.com
