@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
+// const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 
-const dbUrl = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/`;
+// const dbUrl = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/`;
+
+const dbUrl = "mongodb+srv://gmnayeem533:DMqTK4NQOvWojnre@cluster0.kuli4bv.mongodb.net/samurai?retryWrites=true&w=majority";
 
 const connectDatabase = async () => {
     try {
