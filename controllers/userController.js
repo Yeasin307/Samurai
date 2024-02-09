@@ -44,7 +44,7 @@ const createUser = async (req, res, next) => {
 // }
 
 const getSingleUser = async (req, res, next) => {
-    const user_id = req.params.user_id;
+    const user_id = req.params.id;
 
     try {
         const user = await checkUserExists(user_id);

@@ -43,7 +43,7 @@ const createStation = async (req, res, next) => {
 // }
 
 const getSingleStation = async (req, res, next) => {
-    const station_id = req.params.station_id;
+    const station_id = req.params.id;
 
     try {
         const station = await checkStationExists(station_id);
